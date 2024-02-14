@@ -1,7 +1,13 @@
-const ListItem=({props}) =>{
+const ListItem=({name, correo, telefono, asunto, direccion, fecha, hora}) =>{
     return(
         <li>
-        <a href={props.}>{props.}</a>
+        <a href={name}>
+            {correo}
+            {telefono}
+            {asunto}
+            {direccion}
+            {fecha}
+            {hora}</a>
         </li>
     )
 }
