@@ -16,7 +16,7 @@ const persona = {
   signo: 'Cáncer'
 }
 
-function App() {
+function App() {    
 
   return (
     <div>
