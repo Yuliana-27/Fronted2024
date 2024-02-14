@@ -2,7 +2,8 @@ import Listitem from "./ListItem.jsx"
 
 const agenda = [
   {
-     name: 'Yuliana del Carmen Altamirano Montes',  
+
+    name: 'Yuliana del Carmen Altamirano Montes',  
     correo: 'montesyuliana713@gmail.com',
     telefono:'2871655409',
     asunto:'junta de trabajo',
