@@ -1,6 +1,6 @@
 import Listitem from "./ListItem.jsx"
 
-const agenda = [
+const agenda = [ 
   {
 
     name: 'Yuliana del Carmen Altamirano Montes',  
