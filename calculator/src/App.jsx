@@ -1,8 +1,56 @@
+import { useState } from 'react'
 import './App.css'
 const numericButtonsClasses = 'btn btn-outline-dark w-100'
 const OperadoresButtonsClasses = 'btn btn-outline-secondary w-100'
+
+
 function App() {
-  return(
+  const [display, setDisplay] = useState({
+    value: '0',
+    hasPoint: false,
+
+  })
+
+  const updateDisplay = (value) => {
+    if (value === '.'){
+        if (display. hasPoint){
+          return
+        }
+        
+      }
+      setDisplay({
+        ...display,
+        value: display.value + value,
+        hasPoint: true,
+      })
+      return
+
+    }
+    if (display.value === '0'){
+    setDisplay({
+  ...display,
+      value: value,
+
+    })
+    return
+  }
+
+  setDisplay({
+    ...display,
+    value: display.value + value,
+  })
+
+}
+  const clearDispaly = () => {
+    setDisplay({
+      ...display,
+      value: '0',
+      hasPoint: false,
+    })
+  }
+
+
+  return ( 
     <div>
       <h1>Calculator</h1>
       <hr />
@@ -10,7 +58,7 @@ function App() {
         <tbody>
           <tr>
             <td className='text-end' colSpan={4}>
-              <h2>0</h2>
+              <h2>{display.value}</h2>
             </td>
           </tr>
           <tr>
@@ -18,6 +66,7 @@ function App() {
             <button
             className='btn btn-outline-danger'
             type='button'
+            onClick={clearDispaly}
             >
               C
             </button>
@@ -52,6 +101,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('7')}
             >
               7
             </button>
@@ -60,6 +110,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('8')}
             >
               8
             </button>
@@ -68,6 +119,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('9')}
             >
               9
             </button>
@@ -86,6 +138,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('4')}
             >
               4
             </button>
@@ -94,6 +147,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('5')}
             >
               5
             </button>
@@ -102,6 +156,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('6')}
             >
               6
             </button>
@@ -120,6 +175,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('1')}
             >
               1
             </button>
@@ -127,6 +183,7 @@ function App() {
             <td
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('2')}
             >
               2
             </td>
@@ -134,6 +191,7 @@ function App() {
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('3')}
             >
               3
             </button>
@@ -155,6 +213,7 @@ function App() {
               <button
               className={numericButtonsClasses}
               type='button'
+              onClick={() => updateDisplay('0')}
               >
                 0
               </button>
@@ -162,6 +221,7 @@ function App() {
             <td
             className={numericButtonsClasses}
             type='button'
+            onClick={() => updateDisplay('.')}
             >
               .
             </td>
@@ -179,6 +239,6 @@ function App() {
     </div>
   )
 
-}
+  
 
 export default App
