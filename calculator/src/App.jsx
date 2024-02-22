@@ -8,6 +8,8 @@ function App() {
   const [display, setDisplay] = useState({
     value: '0',
     hasPoint: false,
+    operator: '',
+    previousValue: '0',
 
   })
 
@@ -17,7 +19,6 @@ function App() {
           return
         }
         
-      }
       setDisplay({
         ...display,
         value: display.value + value,
@@ -48,6 +49,42 @@ function App() {
       hasPoint: false,
     })
   }
+  const deleteLastCharacter =() => {
+    setDisplay({
+      ...display,
+      value: display.value.slice(0, -1)
+    })
+    if(display.value.length === 1){
+      setDisplay({
+        ...display,
+        value: '0'
+      })
+    }
+  }
+
+  const setOperator = (operator) => {
+    setDisplay({
+      ...display,
+      operator,
+      previousValue: display.value,
+      value: '0',
+      hasPoint: false,
+    })
+  }
+
+  const calculate = () => {
+    if (display.operator === ''){
+      return
+    }
+
+    setDisplay({
+      ...display,
+      operator: '',
+      hasPoint: false,
+      previousValue: '0',
+      value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
+    })
+  }
 
 
   return ( 
@@ -75,6 +112,7 @@ function App() {
             <button
             className='btn btn-outline-danger'
             type='button'
+            onClick={deleteLastCharacter}
             >
               {'<'}
             </button>
@@ -203,6 +241,7 @@ function App() {
             <button
             className={OperadoresButtonsClasses}
             type='button'
+            onClick={() => setOperator('+')}
             >
               +
             </button>
@@ -229,6 +268,7 @@ function App() {
             <button
             className='btn btn-outline-danger'
             type='button'
+            onClick={calculate}
             >
               =
             </button>
@@ -239,6 +279,6 @@ function App() {
     </div>
   )
 
-  
+  }
 
 export default App
