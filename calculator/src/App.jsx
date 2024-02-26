@@ -52,7 +52,8 @@ function App() {
   const deleteLastCharacter =() => {
     setDisplay({
       ...display,
-      value: display.value.slice(0, -1)
+      value: display.value.slice(0, -1),
+      hasPoint: (display.value.slice(-1) === '.')? false: display.hasPoint
     })
     if(display.value.length === 1){
       setDisplay({
@@ -77,12 +78,27 @@ function App() {
       return
     }
 
+
+
+    //let result = 0
+  //  if (display.operator === '%'){
+   //   result = eval(display.previousValue + ' / 100 *' + display.value)
+   // }else{
+   //   result = eval(display.previousValue + display.operator + display.value )
+   // }
+//
+
+
+let result = (display.operator === '%')?
+    eval(display.previousValue + ' / 100 *' + display.value):
+    eval(display.previousValue + display.operator + display.value )
+    
     setDisplay({
       ...display,
       operator: '',
       hasPoint: false,
       previousValue: '0',
-      value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
+      value: result,
     })
   }
 
@@ -121,6 +137,7 @@ function App() {
             <button
             className={OperadoresButtonsClasses}
             type='button'
+            onClick={() => setOperator('%')}
             >
               %
             </button>
@@ -129,6 +146,7 @@ function App() {
             <button
             className={OperadoresButtonsClasses}
             type='button'
+            onClick={() => setOperator('/')}
             >
               /
             </button>
@@ -166,6 +184,7 @@ function App() {
             <button
             className={OperadoresButtonsClasses}
             type='button'
+            onClick={() => setOperator('*')}
             >
               X
             </button>
@@ -203,6 +222,7 @@ function App() {
             <button
             className={OperadoresButtonsClasses}
             type='button'
+            onClick={() => setOperator('-')}
             >
               -
             </button>
@@ -278,7 +298,7 @@ function App() {
       </table>
     </div>
   )
-
   }
+
 
 export default App
