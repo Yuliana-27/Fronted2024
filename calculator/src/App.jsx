@@ -4,6 +4,8 @@ const numericButtonsClasses = 'btn btn-outline-dark w-100'
 const OperadoresButtonsClasses = 'btn btn-outline-secondary w-100'
 
 
+
+
 function App() {
   const [display, setDisplay] = useState({
     value: '0',
@@ -109,7 +111,13 @@ let result = (display.operator === '%')?
     return string.slice(0, length)
   }
 
-
+const buttonsFunctions = {
+  updateDisplay,
+  clearDispaly,
+  deleteLastCharacter,
+  setOperator,
+  calculate,
+}
   return ( 
     <div>
       <h1>Calculator</h1>
