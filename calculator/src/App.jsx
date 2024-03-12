@@ -41,7 +41,7 @@ function App() {
   })
 
 }
-  const clearDispaly = () => {
+  const clearDisplay = () => {
     setDisplay({
       ...display,
       value: '0',
@@ -90,6 +90,8 @@ function App() {
 
 let result = (display.operator === '%')?
     eval(display.previousValue + ' / 100 *' + display.value):
+    display.operator === 'x'?
+    eval(display.previousValue + '*' + display.value):
     eval(display.previousValue + display.operator + display.value )
     
 
@@ -105,12 +107,13 @@ let result = (display.operator === '%')?
   }
 
   const limit = (string = '', length =10) => {
+    string = string + ''
     return string.slice(0, length)
   }
 
 const buttonsFunctions = {
   updateDisplay,
-  clearDispaly,
+  clearDisplay,
   deleteLastCharacter,
   setOperator,
   calculate,
@@ -132,6 +135,7 @@ const buttonsFunctions = {
                 <ButtonsRow 
                 key={index}
                 row={row}
+                buttonsFunctions={buttonsFunctions}
                 />
 
               )
