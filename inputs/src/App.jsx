@@ -1,27 +1,17 @@
-import { useState } from "react"
-
+import { useForm } from "./Hoks/useForm"
 
 function App() {
-  const [inputsForm, setInputsForm] = useState({
+  const [inputsForm, handleInputChange, formReset]= useForm({
     username: "",
     password: "",
   })
-
-  const handleInputChange = (event) => {
-    setInputsForm({
-      ...inputsForm,
-      [event.target.name]: event.target.value,
-    })
-  }
-
+  
   const handleSubmit = (e) =>{
     e.preventDefault()
     console.log("Nombre de usuario:", inputsForm.username)
     console.log("Contraseña:", inputsForm.password)
-    setInputsForm({
-      username: "",
-      password: "",
-    })
+    formReset()
+    
   }
 
 return(
