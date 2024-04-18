@@ -1,6 +1,6 @@
-const ShowItemModal = () => {
+const ShowItemModal = ({task}) => {
     return(
-        <div className="modal fade" id="showItemModal">
+        <div className="modal fade" id={"showItemModal"+task.id}>
             <div className="modal-dialog mdoal-dialog-centered">
                 <div className="modal-content">
             <div className="modal-header">
@@ -8,21 +8,41 @@ const ShowItemModal = () => {
                     className="modal-title"
                     id="showItemModalLabel"
                     >
-                        Show Item
+                        {task.task}
                     </h5>
                 </div>
                 <div className="modal-body">
-                    Show select item information
+                    <div className="row">
+                        <p className="col">
+                        {task.description}
+                        </p>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <b>Limit:</b> {task.limit}
+                        </div>
+                    <div className="col">
+                        <b>Location:</b> {task.location}
+                    </div>
+                    </div>
                 </div>
                 <div className="modal-footer">
                     <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-outline-secondary"
                     data-bs-dismiss="modal"
                     >
+                        <i className="bi bi-x-lg"></i>
                         Close
                     </button>
-
+                    <button className="btn btn-sm btn-outline-primary">
+                    <i className="bi bi-pencil-square"></i> 
+                    Edit
+                    </button>
+                    <button className="btn btn-sm btn-outline-danger">
+                    <i className="bi bi-trash"></i>
+                        Delete
+                    </button>
                 </div>
                 </div>
             </div>
