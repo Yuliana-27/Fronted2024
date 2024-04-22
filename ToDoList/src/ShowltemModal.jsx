@@ -19,29 +19,29 @@ const ShowItemModal = ({task}) => {
                     </div>
                     <div className="row">
                         <div className="col">
-                            <b>Limit:</b> {task.limit}
+                        <i className="bi bi-geo-alt-fill"></i> {task.limit}
                         </div>
                     <div className="col">
-                        <b>Location:</b> {task.location}
+                        <i className="bi bi-geo-alt-fill"></i> {task.location}
                     </div>
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button
-                    type="button"
-                    className="btn btn-outline-secondary"
-                    data-bs-dismiss="modal"
-                    >
-                        <i className="bi bi-x-lg"></i>
-                        Close
+                <button className="btn btn-sm btn-outline-danger">
+                    <i className="bi bi-trash"></i>
+                        Delete
                     </button>
                     <button className="btn btn-sm btn-outline-primary">
                     <i className="bi bi-pencil-square"></i> 
                     Edit
                     </button>
-                    <button className="btn btn-sm btn-outline-danger">
-                    <i className="bi bi-trash"></i>
-                        Delete
+                    <button
+                    type="button"
+                    className="btn btn-outline-secondary"
+                    data-bs-dismiss="modal"
+                    >
+                    <i className="bi bi-x-lg"></i>
+                        Close
                     </button>
                 </div>
                 </div>
