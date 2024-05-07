@@ -1,6 +1,6 @@
 import PropTypes from  "prop-types"
 const ShowItemModal = ({task}) => {
-    return(
+    return( 
         <div className="modal fade" id={"showItemModal"+task.id}>
             <div className="modal-dialog mdoal-dialog-centered">
                 <div className="modal-content">

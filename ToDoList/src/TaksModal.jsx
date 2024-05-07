@@ -8,19 +8,33 @@ const taskInfo ={
     limit: "",
 }
 
-const TaskModal = ({taskList, setTaskList}) => {
+const TaskModal = ({task, taskList, setTaskList}) => {
     const [values, handleInputChange, reset] = useForm(taskInfo)
 
     const handleSaveClick = () => {
-        const newTaskList = [
-            ...taskList,
-            {
-            id: taskList.length + 1,
-            ...values,
-            isDone: false
-            }
-
-        ]
+        let newTaskList = []
+        if (task) {
+            newTaskList = taskList.map((t) => {
+                if  (t.id === task.id) {
+                    t.task = values.task
+                    t.description = values.description
+                    t.location = values.location
+                    t.limit = values.limit
+                }
+                return t
+            })
+        } else {
+            
+            newTaskList = [
+                ...taskList,
+                {
+                id: taskList.length + 1,
+                ...values,
+                isDone: false
+                }
+            ]
+            
+        }
         setTaskList(newTaskList)
         localStorage.setItem("taskList", JSON.stringify(newTaskList))
         
@@ -127,6 +141,7 @@ const TaskModal = ({taskList, setTaskList}) => {
 }
 
 TaskModal.propTypes = {
+    task:PropTypes.object,
     taskList: PropTypes.array.isRequired,
     setTaskList: PropTypes.func.isRequired,
 }
